@@ -105,45 +105,38 @@
   </div>
 
   <script>
- function buscarDados() {
-      const params = new URLSearchParams(window.location.search);
-    const cpf = params.get("cpf");
+function buscarDados() {
+  const params = new URLSearchParams(window.location.search);
+  const cpf = params.get("cpf");
 
-    if (!cpf || cpf.length < 11) {
-      alert("CPF inválido ou não informado na URL.");
-      return;
+  if (!cpf || cpf.length < 11) {
+    alert("CPF inválido ou não informado na URL.");
+    return;
+  }
+
+  const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
+
+  fetch(urlDaAPI, {
+    headers: {
+      "Authorization": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
     }
+  })
+  .then(response => response.json())
+  .then(dados => {
+    console.log(dados);
+    if (dados && dados.dados && dados.dados.length > 0) {
+      document.getElementById("nome").innerText = dados.dados[0].NOME;
+      document.getElementById("cpf").innerText = dados.dados[0].CPF;
+      document.getElementById("nascimento").innerText = dados.dados[0].NASC;
+      document.getElementById("mae").innerText = dados.dados[0].NOME_MAE;
+    } else {
+      alert("Nenhum dado encontrado para esse CPF.");
+    }
+  })
+  .catch(error => {
+    console.error("Erro ao buscar dados da API:", error);
+  });
+}
 
-
-    // Substitua pela URL da sua API
-    const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
-
-    // Buscar dados e preencher
-    fetch(`https://api.mytrust.space/v1/cpf/${cpf}`, {
-  headers: {
-    "Authorization": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
-  }
-})
-
-      .then(response => response.json())
-      .then(dados => {
-         console.log(dados);
-        if (dados && dados.dados && dados.dados.length > 0) {
-        document.getElementById("nome").innerText = dados.dados[0].NOME;
-        document.getElementById("cpf").innerText = dados.dados[0].CPF;
-        document.getElementById("nascimento").innerText = dados.dados[0].NASC;
-        document.getElementById("mae").innerText = dados.dados[0].NOME_MAE;
-        } else {
-         alert("Nenhum dado encontrado para esse CPF.");
-  }
-      })
-      .catch(error => {
-        console.error("Erro ao buscar dados da API:", error);
-      });
- }
-    document.addEventListener('DOMContentLoaded', buscarDados);
-    
-  </script>
-
-</body>
-</html>
+document.addEventListener('DOMContentLoaded', buscarDados);
+</script>
