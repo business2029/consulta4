@@ -113,14 +113,18 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const params = new URLSearchParams(window.location.search);
-const cpf = params.get("cpf") || "37364246800";
+ const params = new URLSearchParams(window.location.search);
+const cpf = params.get("cpf");
 
+console.log("URL completa:", window.location.href);
+console.log("Parâmetros da URL:", window.location.search);
+console.log("CPF capturado:", cpf);
 
-  if (!cpf || cpf.length < 11) {
-    alert("CPF inválido ou não informado na URL.");
-    return;
-  }
+if (!cpf || cpf.length < 11) {
+  alert("CPF inválido ou não informado na URL.");
+  return;
+}
+
 
   const urlDaAPI = `https://hook.us2.make.com/eun81vr0gbb9lvuz0mncmjnp98okc9dv?cpf=${cpf}`;
 
