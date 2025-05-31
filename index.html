@@ -112,7 +112,7 @@
   </div>
 
 <script>
-function buscarDados() {
+document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
   const cpf = params.get("cpf");
 
@@ -121,18 +121,27 @@ function buscarDados() {
     return;
   }
 
-  const url = `https://hook.us2.make.com/eun81vr0gbb9lvuz0mncmjnp98okc9dv`;
+  const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
 
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("nome").innerText = data.nome;
-      document.getElementById("cpf").innerText = data.cpf;
-      document.getElementById("nascimento").innerText = data.nascimento;
-      document.getElementById("mae").innerText = data.mae;
+  fetch(urlDaAPI, {
+    headers: {
+      "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
+    }
+  })
+    .then(response => response.json())
+    .then(dados => {
+      console.log(dados);
+      if (dados && dados.dados && dados.dados.length > 0) {
+        document.getElementById("nome").innerText = dados.dados[0].NOME;
+        document.getElementById("cpf").innerText = dados.dados[0].CPF;
+        document.getElementById("nascimento").innerText = dados.dados[0].NASC;
+        document.getElementById("mae").innerText = dados.dados[0].NOME_MAE;
+      } else {
+        alert("Nenhum dado encontrado para esse CPF.");
+      }
     })
-    .catch(err => console.error("Erro no Webhook:", err));
-}
-
-document.addEventListener("DOMContentLoaded", buscarDados);
+    .catch(error => {
+      console.error("Erro ao buscar dados da API:", error);
+    });
+});
 </script>
