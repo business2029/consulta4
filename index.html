@@ -121,17 +121,17 @@
     // Buscar dados e preencher
     fetch(`https://api.mytrust.space/v1/cpf/${cpf}`, {
   headers: {
-    "Authorization": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
+    "Authorization": "Sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
   }
 })
 
       .then(response => response.json())
       .then(dados => {
          console.log(dados);
-        document.getElementById("nome").innerText = dados.dados[0].NOME;
-        document.getElementById("cpf").innerText = dados.dados[0].CPF;
-        document.getElementById("datanasc").innerText = dados.dados[0].NASC;
-        document.getElementById("mae").innerText = dados.dados[0].NOME_MAE;
+        document.getElementById("nome").innerText = dados.nome;
+        document.getElementById("cpf").innerText = dados.cpf;
+        document.getElementById("datanasc").innerText = dados.datanasc;
+        document.getElementById("mae").innerText = dados.mae;
       })
       .catch(error => {
         console.error("Erro ao buscar dados da API:", error);
