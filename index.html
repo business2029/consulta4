@@ -124,13 +124,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlDaAPI = `https://hook.us2.make.com/eun81vr0gbb9lvuz0mncmjnp98okc9dv?cpf=${cpf}`;
 
   fetch(urlDaAPI, {
-    headers: {
-      "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
-    }
-  })
-    .then(response => response.json())
-    .then(dados => {
-      console.log("DADOS:", dados);
+  headers: {
+    "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
+  }
+})
+  .then(response => response.json())
+  .then(dados => {
+    console.log("DADOS:", dados); // <-- esta linha deve estar aqui
+
 
       if (dados && dados.dados && dados.dados.length > 0) {
         const info = dados.dados[0];
