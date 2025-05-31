@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const urlDaAPI = `https://hook.us2.make.com/eun81vr0gbb9lvuz0mncmjnp98okc9dv`;
+  const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
 
   fetch(urlDaAPI, {
     headers: {
@@ -130,12 +130,21 @@ document.addEventListener("DOMContentLoaded", function () {
   })
     .then(response => response.json())
     .then(dados => {
-      console.log(dados);
+      console.log("DADOS:", dados);
+
       if (dados && dados.dados && dados.dados.length > 0) {
-        document.getElementById("nome").innerText = dados.dados[0].NOME;
-        document.getElementById("cpf").innerText = dados.dados[0].CPF;
-        document.getElementById("nascimento").innerText = dados.dados[0].NASC;
-        document.getElementById("mae").innerText = dados.dados[0].NOME_MAE;
+        const info = dados.dados[0];
+
+        // Verifica se os elementos existem antes de tentar preencher
+        const nomeEl = document.getElementById("nome");
+        const cpfEl = document.getElementById("cpf");
+        const nascEl = document.getElementById("nascimento");
+        const maeEl = document.getElementById("mae");
+
+        if (nomeEl) nomeEl.innerText = info.NOME;
+        if (cpfEl) cpfEl.innerText = info.CPF;
+        if (nascEl) nascEl.innerText = info.NASC;
+        if (maeEl) maeEl.innerText = info.NOME_MAE;
       } else {
         alert("Nenhum dado encontrado para esse CPF.");
       }
