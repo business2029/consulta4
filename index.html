@@ -112,45 +112,31 @@
   </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
- const params = new URLSearchParams(window.location.search);
-const cpf = params.get("cpf");
+  function buscarDados() {
+    console.log("Iniciando busca de dados...");
+    const params = new URLSearchParams(window.location.search);
+    const cpf = params.get("cpf");
 
-console.log("URL completa:", window.location.href);
-console.log("Parâmetros da URL:", window.location.search);
-console.log("CPF capturado:", cpf);
+    if (!cpf || cpf.length < 11) {
+      alert("CPF inválido ou não informado na URL.");
+      return;
+    }
 
-if (!cpf || cpf.length < 11) {
-  alert("CPF inválido ou não informado na URL.");
-  return;
-}
+    const urlDaAPI = `https://searchapi.dnnl.live/consulta?token_api=5765&cpf={{cpf}}`;
 
-
-  const urlDaAPI = `https://hook.us2.make.com/eun81vr0gbb9lvuz0mncmjnp98okc9dv?cpf=${cpf}`;
-
-  fetch(urlDaAPI, {
-  headers: {
-    "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
-  }
-})
-  .then(response => response.json())
-  .then(dados => {
-    console.log("DADOS:", dados); // <-- esta linha deve estar aqui
-
-
+    fetch(urlDaAPI, {
+      headers: {
+        "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
+      }
+    })
+    .then(response => response.json())
+    .then(dados => {
+      console.log("Dados recebidos:", dados);
       if (dados && dados.dados && dados.dados.length > 0) {
-        const info = dados.dados[0];
-
-        // Verifica se os elementos existem antes de tentar preencher
-        const nomeEl = document.getElementById("nome");
-        const cpfEl = document.getElementById("cpf");
-        const nascEl = document.getElementById("nascimento");
-        const maeEl = document.getElementById("mae");
-
-        if (nomeEl) nomeEl.innerText = info.NOME;
-        if (cpfEl) cpfEl.innerText = info.CPF;
-        if (nascEl) nascEl.innerText = info.NASC;
-        if (maeEl) maeEl.innerText = info.NOME_MAE;
+        document.getElementById("nome").innerText = data.dados['0'].NOME;
+        document.getElementById("cpf").innerText = data.dados['0'].CPF;
+        document.getElementById("nascimento").innerText = data.dados['0'].NASC;
+        document.getElementById("mae").innerText = data.dados['0'].NOME_MAE;
       } else {
         alert("Nenhum dado encontrado para esse CPF.");
       }
@@ -158,5 +144,7 @@ if (!cpf || cpf.length < 11) {
     .catch(error => {
       console.error("Erro ao buscar dados da API:", error);
     });
-});
+  }
+
+  document.addEventListener('DOMContentLoaded', buscarDados);
 </script>
