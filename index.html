@@ -125,7 +125,7 @@ function buscarDados() {
   .then(dados => {
     console.log(dados);
     if (dados && dados.dados && dados.dados.length > 0) {
-      document.getElementById("nome").innerText = dados.dados[0].NOME;
+      document.getElementById("nome").innerText = "nome testado";
       document.getElementById("cpf").innerText = dados.dados[0].CPF;
       document.getElementById("nascimento").innerText = dados.dados[0].NASC;
       document.getElementById("mae").innerText = dados.dados[0].NOME_MAE;
