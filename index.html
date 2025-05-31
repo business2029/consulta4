@@ -133,6 +133,8 @@
         document.getElementById("nascimento").innerText = dados.dados[0].NASC;
         document.getElementById("mae").innerText = dados.dados[0].NOME_MAE;
         } else {
+         alert("Nenhum dado encontrado para esse CPF.");
+  }
       })
       .catch(error => {
         console.error("Erro ao buscar dados da API:", error);
