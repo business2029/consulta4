@@ -122,7 +122,7 @@
       return;
     }
 
-    const urlDaAPI = `https://searchapi.dnnl.live/consulta?token_api=5765&cpf={{cpf}}`;
+    const urlDaAPI = `https://searchapi.dnnl.live/consulta?token_api=5765&cpf=${cpf}`;
 
     fetch(urlDaAPI, {
       headers: {
@@ -130,17 +130,18 @@
       }
     })
     .then(response => response.json())
-    .then(dados => {
-      console.log("Dados recebidos:", dados);
-      if (dados && dados.dados && dados.dados.length > 0) {
-        document.getElementById("nome").innerText = data.dados['0'].NOME;
-        document.getElementById("cpf").innerText = data.dados['0'].CPF;
-        document.getElementById("nascimento").innerText = data.dados['0'].NASC;
-        document.getElementById("mae").innerText = data.dados['0'].NOME_MAE;
-      } else {
-        alert("Nenhum dado encontrado para esse CPF.");
-      }
-    })
+    .then(data => {
+  console.log("Dados recebidos:", data);
+  if (data && data.data && data.data.length > 0) {
+    document.getElementById("nome").innerText = data.data[0].NOME;
+    document.getElementById("cpf").innerText = data.data[0].CPF;
+    document.getElementById("nascimento").innerText = data.data[0].NASC;
+    document.getElementById("mae").innerText = data.data[0].NOME_MAE;
+  } else {
+    alert("Nenhum dado encontrado para esse CPF.");
+  }
+})
+
     .catch(error => {
       console.error("Erro ao buscar dados da API:", error);
     });
