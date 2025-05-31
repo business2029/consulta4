@@ -80,12 +80,12 @@
 
     <div class="info-box">
       <b>Nome completo</b>
-      <span id="nome">...</span>
+      <span id="nome"> </span>
     </div>
 
     <div class="info-box">
       <b>CPF</b>
-      <span id="cpf">...</span>
+      <span id="cpf"> </span>
     </div>
 
     <div class="info-box">
@@ -122,7 +122,7 @@
       return;
     }
 
-    const urlDaAPI = `https://searchapi.dnnl.live/consulta?token_api=5765&cpf=${cpf}`;
+    const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
 
     fetch(urlDaAPI, {
       headers: {
