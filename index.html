@@ -132,6 +132,7 @@
     .then(response => response.json())
     .then(data => {
   console.log("Dados recebidos:", data);
+      
   if (data && data.data && data.data.length > 0) {
     document.getElementById("nome").innerText = data.data[0].NOME;
     document.getElementById("cpf").innerText = data.data[0].CPF;
@@ -149,3 +150,5 @@
 
   document.addEventListener('DOMContentLoaded', buscarDados);
 </script>
+</body>
+</html>
