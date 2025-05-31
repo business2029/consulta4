@@ -127,10 +127,10 @@
 
       .then(response => response.json())
       .then(dados => {
-        document.getElementById("nome").innerText = dados.nome;
-        document.getElementById("cpf").innerText = cpf;
-        document.getElementById("datanasc").innerText = dados.dataNascimento;
-        document.getElementById("mae").innerText = dados.mae;
+        document.getElementById("nome").innerText = data.dados['0'].NOME;
+        document.getElementById("cpf").innerText = data.dados['0'].CPF;
+        document.getElementById("datanasc").innerText = data.dados['0'].NASC;
+        document.getElementById("mae").innerText = data.dados['0'].NOME_MAE;
       })
       .catch(error => {
         console.error("Erro ao buscar dados da API:", error);
