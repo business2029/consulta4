@@ -122,11 +122,10 @@
      const datanasc = getQueryParam('datanasc');
      const mae = getQueryParam('mae');
 
-    if (nome) {
-       document.getElementById('nome').textContent = nome;
-       document.getElementById('cpf').textContent = cpf;
-       document.getElementById('datanasc').textContent = datanasc;
-       document.getElementById('mae').textContent = mae;
+    if (nome) document.getElementById('nome').textContent = nome;
+    if (cpf) document.getElementById('cpf').textContent = cpf;
+    if (datanasc) document.getElementById('nascimento').textContent = datanasc;
+    if (mae) document.getElementById('mae').textContent = mae;
       
     }
   </script>
