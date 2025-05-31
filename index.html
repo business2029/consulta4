@@ -148,7 +148,9 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', buscarDados);
+ document.addEventListener('DOMContentLoaded', () => {
+  console.log("Testando elemento nome:", document.getElementById("nome"));
+});
 </script>
 </body>
 </html>
