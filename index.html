@@ -119,10 +119,6 @@
         return;
       }
 
-    // Obter CPF da URL (https://api.mytrust.space/v1/cpf/${cpf})
-    const params = new URLSearchParams(window.location.search);
-    const cpf = params.get("cpf");
-
     // Substitua pela URL da sua API
     const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
 
@@ -137,7 +133,7 @@
       .then(dados => {
         document.getElementById("nome").innerText = dados.nome;
         document.getElementById("cpf").innerText = dados.cpf;
-        document.getElementById("datanasc").innerText = dados.datanasc;
+        document.getElementById("dataNascimento").innerText = dados.dataNascimento;
         document.getElementById("mae").innerText = dados.mae;
       })
       .catch(error => {
