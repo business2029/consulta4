@@ -114,10 +114,6 @@
       return;
     }
 
-      if (!cpf || cpf.length < 11) {
-        alert("Digite um CPF válido.");
-        return;
-      }
 
     // Substitua pela URL da sua API
     const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
@@ -132,8 +128,8 @@
       .then(response => response.json())
       .then(dados => {
         document.getElementById("nome").innerText = dados.nome;
-        document.getElementById("cpf").innerText = dados.cpf;
-        document.getElementById("dataNascimento").innerText = dados.dataNascimento;
+        document.getElementById("cpf").innerText = cpf;
+        document.getElementById("datanasc").innerText = dados.dataNascimento;
         document.getElementById("mae").innerText = dados.mae;
       })
       .catch(error => {
