@@ -91,9 +91,10 @@
     </div>
 
     <div class="info-box">
-      <b>Indenização a receber</b>
-      <strong> </p> R$ 7.854,64  
-   </div>
+  <b>Indenização a receber</b>
+  <strong>R$ 7.854,64</strong>
+</div>
+
 
     <div class="divider"></div>
 
@@ -105,7 +106,8 @@
 
   <script>
  function buscarDados() {
-      const cpf = document.getElementById('cpf').value.trim();
+   document.addEventListener('DOMContentLoaded', buscarDados);
+
 
       if (!cpf || cpf.length < 11) {
         alert("Digite um CPF válido.");
@@ -120,7 +122,7 @@
     const urlDaAPI = `https://api.mytrust.space/v1/cpf/{{cpf}}`;
 
     // Buscar dados e preencher
-    fetch(`https://api.mytrust.space/v1/cpf/{{cpf}}`, {
+    fetch(`https://api.mytrust.space/v1/cpf/${cpf}`, {
   headers: {
     "Authorization": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
   }
