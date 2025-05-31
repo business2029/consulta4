@@ -104,7 +104,7 @@
     </div>
   </div>
 
- <script>
+<script>
 function buscarDados() {
   const params = new URLSearchParams(window.location.search);
   const cpf = params.get("cpf");
@@ -118,7 +118,7 @@ function buscarDados() {
 
   fetch(urlDaAPI, {
     headers: {
-      "Authorization": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
+      "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
     }
   })
   .then(response => response.json())
@@ -137,6 +137,9 @@ function buscarDados() {
     console.error("Erro ao buscar dados da API:", error);
   });
 }
+
+document.addEventListener('DOMContentLoaded', buscarDados);
+</script>
 
 document.addEventListener('DOMContentLoaded', buscarDados);
 </script>
