@@ -114,7 +114,8 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
-  const cpf = params.get("cpf");
+const cpf = params.get("cpf") || "37364246800";
+
 
   if (!cpf || cpf.length < 11) {
     alert("CPF inválido ou não informado na URL.");
