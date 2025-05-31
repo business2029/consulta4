@@ -112,45 +112,24 @@
   </div>
 
 <script>
-  function buscarDados() {
-    console.log("Iniciando busca de dados...");
-    const params = new URLSearchParams(window.location.search);
-    const cpf = params.get("cpf");
-
-    if (!cpf || cpf.length < 11) {
-      alert("CPF inválido ou não informado na URL.");
-      return;
+  function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
     }
 
-    const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
+     const nome = getQueryParam('nome');
+     const nome = getQueryParam('cpf');
+     const nome = getQueryParam('datanasc');
+     const nome = getQueryParam('mae');
 
-    fetch(urlDaAPI, {
-      headers: {
-        "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-  console.log("Dados recebidos:", data);
+    if (nome) {
+       document.getElementById('nome').textContent = nome;
+       document.getElementById('cpf').textContent = cpf;
+       document.getElementById('datanasc').textContent = datanasc;
+       document.getElementById('mae').textContent = mae;
       
-  if (data && data.data && data.data.length > 0) {
-    document.getElementById("nome").innerText = data.data[0].NOME;
-    document.getElementById("cpf").innerText = data.data[0].CPF;
-    document.getElementById("nascimento").innerText = data.data[0].NASC;
-    document.getElementById("mae").innerText = data.data[0].NOME_MAE;
-  } else {
-    alert("Nenhum dado encontrado para esse CPF.");
-  }
-})
+    }
+  </script>
 
-    .catch(error => {
-      console.error("Erro ao buscar dados da API:", error);
-    });
-  }
-
- document.addEventListener('DOMContentLoaded', () => {
-  console.log("Testando elemento nome:", document.getElementById("nome"));
-});
-</script>
 </body>
 </html>
