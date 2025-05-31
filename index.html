@@ -122,13 +122,14 @@
       return;
     }
 
-    const urlDaAPI = `https://api.mytrust.space/v1/cpf/${cpf}`;
+ const urlDaAPI = `https://corsproxy.io/?https://api.mytrust.space/v1/cpf/${cpf}`;
 
-    fetch(urlDaAPI, {
-      headers: {
-        "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
-      }
-    })
+fetch(urlDaAPI, {
+  headers: {
+    "x-trust-key": "sk_01jvm86wy4yykgc5famr8wcepw01jvm86wy57enmmdvvmdpcbwfy"
+  }
+})
+
     .then(response => response.json())
     .then(dados => {
       console.log("Dados recebidos:", dados);
